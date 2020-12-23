@@ -45,6 +45,27 @@ def store_email():
     print(ent_email_loc.get())
     print(ent_password_loc.get())
     print(ent_hint_loc.get())
+    #opens file textdata.txt then prints input onto file
+
+def store_file():
+    a = ent_email_loc.get()
+    b = ent_password_loc.get()
+    c = ent_hint_loc.get()
+    global params
+    params = [a,b,c]
+    print(a)
+    print(b)
+    print(c)
+    f = open('Textdata.txt', 'w')
+    f.write('Username: ')
+    f.write(a)
+    f.write('\n')
+    f.write('Password: ')
+    f.write(b)
+    f.write('\n')
+    f.write('Hint: ')
+    f.write(c)
+    f.close()
 
 
 #Store email and password button
