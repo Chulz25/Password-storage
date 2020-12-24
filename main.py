@@ -1,5 +1,6 @@
 import tkinter as tk
-
+from tkinter import messagebox
+import tkinter.messagebox
 
 # Set-up the window
 window = tk.Tk()
@@ -25,6 +26,48 @@ ent_hint_loc = tk.Entry(master=frm_hintEntry, width=20)
 lbl_hint = tk.Label(master=frm_hintEntry, text = "Hint here")
 
 
+
+
+#definitons
+#stores email then prints in commandline
+
+
+def store_email():
+    print(ent_email_loc.get())
+    print(ent_password_loc.get())
+    print(ent_hint_loc.get())
+
+def display(self):
+    self.ent_email_loc.grid(row=6 + self.i, column=1, sticky=W)
+    self.ent_password_loc(row=6 + self.i, column=2)
+    self.ent_hint_loc(row=6 + self.i, column=3)
+   #opens file textdata.txt then prints input onto file
+
+
+def store_file():
+    a = ent_email_loc.get()
+    b = ent_password_loc.get()
+    c = ent_hint_loc.get()
+    global params
+    params = [a,b,c]
+    print(a)
+    print(b)
+    print(c)
+    f = open('Textdata.txt', 'a')
+    f.write('Username: ' + a + '\n' + 'Password: ' + b + '\n' + 'Hint: ' + c + '\n')
+    f.close()
+    messagebox.showinfo('Added Entity', 'Successfully Added, \n' + 'Email: ' + a + '\nPassword: ' + b + '\nHint: ' + c + '\n')
+  
+
+
+
+
+
+#Store email and password button
+btn_emailbutton = tk.Button(master=window, text="Store!", command=store_file,)
+
+    #GRAPHICS
+   
 #layout of email entry and lab in frm_entry
 #using the .grid() geometry manager
 #email
@@ -39,55 +82,16 @@ lbl_password.grid(row=1, column=1, sticky='w')
 ent_hint_loc.grid(row=2, column=0, sticky='e')
 lbl_hint.grid(row=2, column=1, sticky='w')
 
-
-#definitons
-def store_email():
-    print(ent_email_loc.get())
-    print(ent_password_loc.get())
-    print(ent_hint_loc.get())
-    #opens file textdata.txt then prints input onto file
-
-def store_file():
-    a = ent_email_loc.get()
-    b = ent_password_loc.get()
-    c = ent_hint_loc.get()
-    global params
-    params = [a,b,c]
-    print(a)
-    print(b)
-    print(c)
-    f = open('Textdata.txt', 'w')
-    f.write('Username: ')
-    f.write(a)
-    f.write('\n')
-    f.write('Password: ')
-    f.write(b)
-    f.write('\n')
-    f.write('Hint: ')
-    f.write(c)
-    f.close()
-
-
-#Store email and password button
-btn_emailbutton = tk.Button(
-    master=window,
-    text="Store!",
-    command=store_email,
-    )
-
-
-
 #setup the layout using .grid() geometry manager
 #email
 frm_emailEntry.grid(row=0, column=0, pady=20)
-btn_emailbutton.grid(row=4, column=1, pady=10)
+btn_emailbutton.grid(row=3, column=1, pady=20)
 
 #password
 frm_passwordEntry.grid(row=1, column=0, pady=20)
 
 #hint
 frm_hintEntry.grid(row=2, column=0, pady=20)
-
 
 
 
