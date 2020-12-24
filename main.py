@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 import tkinter.messagebox
 
+
+
 # Set-up the window
 window = tk.Tk()
 window.title("Account Storage")
@@ -29,21 +31,14 @@ lbl_hint = tk.Label(master=frm_hintEntry, text = "Hint here")
 
 
 #definitons
+
 #stores email then prints in commandline
-
-
 def store_email():
     print(ent_email_loc.get())
     print(ent_password_loc.get())
     print(ent_hint_loc.get())
-
-def display(self):
-    self.ent_email_loc.grid(row=6 + self.i, column=1, sticky=W)
-    self.ent_password_loc(row=6 + self.i, column=2)
-    self.ent_hint_loc(row=6 + self.i, column=3)
-   #opens file textdata.txt then prints input onto file
-
-
+    
+ #opens file textdata.txt then prints input onto file
 def store_file():
     a = ent_email_loc.get()
     b = ent_password_loc.get()
@@ -57,10 +52,20 @@ def store_file():
     f.write('Username: ' + a + '\n' + 'Password: ' + b + '\n' + 'Hint: ' + c + '\n')
     f.close()
     messagebox.showinfo('Added Entity', 'Successfully Added, \n' + 'Email: ' + a + '\nPassword: ' + b + '\nHint: ' + c + '\n')
-  
+    frm_email2 = tk.Frame(master=window)
+    email_label2 = tk.Label(master=frm_email2, text = a )
+    frm_email2.grid(row=7)
+    email_label2.grid(row=7)
 
+    frm_password2 = tk.Frame(master=window)
+    password_label2 = tk.Label(master=frm_password2, text = b )
+    frm_password2.grid(row=7, column=1)
+    password_label2.grid(row=7, column=1)
 
-
+    frm_hint2 = tk.Frame(master=window)
+    hint_label2 = tk.Label(master=frm_hint2, text = c )
+    frm_hint2.grid(row=7, column=2)
+    hint_label2.grid(row=7, column=2)
 
 
 #Store email and password button
