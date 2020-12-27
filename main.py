@@ -2,30 +2,38 @@ import tkinter as tk
 from tkinter import messagebox
 import tkinter.messagebox
 
+#variables
 
+i= 7
+a= 0    #a = email
+b= 0    #b = password
+c= 0    #c = hint
+params = [a,b,c]
 
 # Set-up the window
 window = tk.Tk()
 window.title("Account Storage")
 
-
+#title lbl frame
+frm_titlelbl = tk.Frame(master=window)
+lbl_title = tk.Label(master=frm_titlelbl, text ="Account Storage")
 
 #Email entry frame
 frm_emailEntry = tk.Frame(master=window)
 ent_email_loc = tk.Entry(master=frm_emailEntry, width=20)
-lbl_email = tk.Label(master=frm_emailEntry, text ="Email here")
+lbl_email = tk.Label(master=frm_emailEntry, text ="Email: ")
 
 
 #Password entry frame
 frm_passwordEntry = tk.Frame(master=window)
 ent_password_loc = tk.Entry(master=frm_passwordEntry, width=20)
-lbl_password = tk.Label(master=frm_passwordEntry, text ="Password here")
+lbl_password = tk.Label(master=frm_passwordEntry, text ="Password: ")
 
 
 #Hint entry frame
 frm_hintEntry = tk.Frame(master=window)
 ent_hint_loc = tk.Entry(master=frm_hintEntry, width=20)
-lbl_hint = tk.Label(master=frm_hintEntry, text = "Hint here")
+lbl_hint = tk.Label(master=frm_hintEntry, text = "Hint: ")
 
 
 
@@ -44,7 +52,7 @@ def store_file():
     b = ent_password_loc.get()
     c = ent_hint_loc.get()
     global params
-    params = [a,b,c]
+    
     print(a)
     print(b)
     print(c)
@@ -52,20 +60,24 @@ def store_file():
     f.write('Username: ' + a + '\n' + 'Password: ' + b + '\n' + 'Hint: ' + c + '\n')
     f.close()
     messagebox.showinfo('Added Entity', 'Successfully Added, \n' + 'Email: ' + a + '\nPassword: ' + b + '\nHint: ' + c + '\n')
+    
+    global i
+    
     frm_email2 = tk.Frame(master=window)
-    email_label2 = tk.Label(master=frm_email2, text = a )
-    frm_email2.grid(row=7)
-    email_label2.grid(row=7)
+    email_label2 = tk.Label(master=frm_email2, text ="Email: " + a )
+    frm_email2.grid(row=i)
+    email_label2.grid(row=i)
 
     frm_password2 = tk.Frame(master=window)
-    password_label2 = tk.Label(master=frm_password2, text = b )
-    frm_password2.grid(row=7, column=1)
-    password_label2.grid(row=7, column=1)
+    password_label2 = tk.Label(master=frm_password2, text ="Password: " + b )
+    frm_password2.grid(row=i, column=1)
+    password_label2.grid(row=i, column=1)
 
     frm_hint2 = tk.Frame(master=window)
-    hint_label2 = tk.Label(master=frm_hint2, text = c )
-    frm_hint2.grid(row=7, column=2)
-    hint_label2.grid(row=7, column=2)
+    hint_label2 = tk.Label(master=frm_hint2, text ="Hint: " + c )
+    frm_hint2.grid(row=i, column=2)
+    hint_label2.grid(row=i, column=2)
+    i= i + 1
 
 
 #Store email and password button
@@ -75,28 +87,33 @@ btn_emailbutton = tk.Button(master=window, text="Store!", command=store_file,)
    
 #layout of email entry and lab in frm_entry
 #using the .grid() geometry manager
+
+#title
+frm_titlelbl.grid(row=0, columnspan=3)
+lbl_title.grid(row=0, columnspan=3)
 #email
-ent_email_loc.grid(row=0, column=0, sticky='e')
-lbl_email.grid(row=0, column=1, sticky='w')
+ent_email_loc.grid(columnspan=3, row=1, column=1, sticky='W')
+lbl_email.grid(row=1, sticky='E', padx=3)
 
 #password
-ent_password_loc.grid(row=1, column=0, sticky='e')
-lbl_password.grid(row=1, column=1, sticky='w')
+ent_password_loc.grid(columnspan=3, row=2, column=1, sticky='w')
+lbl_password.grid(row=2, sticky='E', padx=3)
 
 #hint
-ent_hint_loc.grid(row=2, column=0, sticky='e')
-lbl_hint.grid(row=2, column=1, sticky='w')
+ent_hint_loc.grid(columnspan=3, row=3, column=1, sticky='w')
+lbl_hint.grid(row=3, sticky='E', padx=3)
 
 #setup the layout using .grid() geometry manager
 #email
-frm_emailEntry.grid(row=0, column=0, pady=20)
-btn_emailbutton.grid(row=3, column=1, pady=20)
+frm_emailEntry.grid(row=1, columnspan=2, pady=20)
+btn_emailbutton.grid(row=4, column=1, pady=20)
 
 #password
-frm_passwordEntry.grid(row=1, column=0, pady=20)
+frm_passwordEntry.grid(row=2, columnspan=2, pady=20)
 
 #hint
-frm_hintEntry.grid(row=2, column=0, pady=20)
+frm_hintEntry.grid(row=3, columnspan=2, pady=20)
+
 
 
 
