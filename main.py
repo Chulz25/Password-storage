@@ -36,8 +36,7 @@ ent_hint_loc = tk.Entry(master=frm_hintEntry, width=20)
 lbl_hint = tk.Label(master=frm_hintEntry, text = "Hint: ")
 
 
-
-
+       
 #definitons
 
 #stores email then prints in commandline
@@ -63,26 +62,42 @@ def store_file():
     
     global i
     
-    frm_email2 = tk.Frame(master=window)
-    email_label2 = tk.Label(master=frm_email2, text ="Email: " + a )
-    frm_email2.grid(row=i)
-    email_label2.grid(row=i)
+    #frm_email2 = tk.Frame(master=window)
+    #email_label2 = tk.Label(master=frm_email2, text ="Email: " + a )
+    #frm_email2.grid(row=i)
+    #email_label2.grid(row=i)
 
-    frm_password2 = tk.Frame(master=window)
-    password_label2 = tk.Label(master=frm_password2, text ="Password: " + b )
-    frm_password2.grid(row=i, column=1)
-    password_label2.grid(row=i, column=1)
+    #frm_password2 = tk.Frame(master=window)
+    #password_label2 = tk.Label(master=frm_password2, text ="Password: " + b )
+    #frm_password2.grid(row=i, column=1)
+    #password_label2.grid(row=i, column=1)
 
-    frm_hint2 = tk.Frame(master=window)
-    hint_label2 = tk.Label(master=frm_hint2, text ="Hint: " + c )
-    frm_hint2.grid(row=i, column=2)
-    hint_label2.grid(row=i, column=2)
+    #frm_hint2 = tk.Frame(master=window)
+    #hint_label2 = tk.Label(master=frm_hint2, text ="Hint: " + c )
+    #frm_hint2.grid(row=i, column=2)
+    #hint_label2.grid(row=i, column=2)
     i= i + 1
+   
+   
+
+    
+    
 
 
+def openfile():
+    f = open("Textdata.txt", "r")
+    frm_test = tk.Frame(master=window)
+    test_test = tk.Label(master=frm_test, text =f.read())
+    frm_test.grid(row=7)
+    test_test.grid(row=7)
+    f.close()
+    test_test.grid_forget
+    
+            
+#buttons
 #Store email and password button
 btn_emailbutton = tk.Button(master=window, text="Store!", command=store_file,)
-
+btn_viewStorage = tk.Button(master=window, text="View", command= openfile,)
     #GRAPHICS
    
 #layout of email entry and lab in frm_entry
@@ -107,7 +122,7 @@ lbl_hint.grid(row=3, sticky='E', padx=3)
 #email
 frm_emailEntry.grid(row=1, columnspan=2, pady=20)
 btn_emailbutton.grid(row=4, column=1, pady=20)
-
+btn_viewStorage.grid(row=4, column=2, pady=20)
 #password
 frm_passwordEntry.grid(row=2, columnspan=2, pady=20)
 
