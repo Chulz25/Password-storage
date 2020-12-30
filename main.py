@@ -4,11 +4,11 @@ import tkinter.messagebox
 
 #variables
 
-i= 7
+i= 7    #integer creates a new line on row 7++
 a= 0    #a = email
 b= 0    #b = password
 c= 0    #c = hint
-params = [a,b,c]
+params = [a,b,c]  #makes params a variable that includes a, b and c
 
 # Set-up the window
 window = tk.Tk()
@@ -37,7 +37,7 @@ lbl_hint = tk.Label(master=frm_hintEntry, text = "Hint: ")
 
 
        
-#definitons
+       #Functions
 
 #stores email then prints in commandline
 def store_email():
@@ -51,7 +51,6 @@ def store_file():
     b = ent_password_loc.get()
     c = ent_hint_loc.get()
     global params
-    
     print(a)
     print(b)
     print(c)
@@ -59,31 +58,10 @@ def store_file():
     f.write('Username: ' + a + ' ' + 'Password: ' + b + ' ' + 'Hint: ' + c + '\n')
     f.close()
     messagebox.showinfo('Added Entity', 'Successfully Added, \n' + 'Email: ' + a + '\nPassword: ' + b + '\nHint: ' + c + '\n')
-    
     global i
-    
-    #frm_email2 = tk.Frame(master=window)
-    #email_label2 = tk.Label(master=frm_email2, text ="Email: " + a )
-    #frm_email2.grid(row=i)
-    #email_label2.grid(row=i)
-
-    #frm_password2 = tk.Frame(master=window)
-    #password_label2 = tk.Label(master=frm_password2, text ="Password: " + b )
-    #frm_password2.grid(row=i, column=1)
-    #password_label2.grid(row=i, column=1)
-
-    #frm_hint2 = tk.Frame(master=window)
-    #hint_label2 = tk.Label(master=frm_hint2, text ="Hint: " + c )
-    #frm_hint2.grid(row=i, column=2)
-    #hint_label2.grid(row=i, column=2)
     i= i + 1
    
-   
-
-    
-    
-
-
+ #opens file to grab any passwords and emails and stores them in row7 and above
 def openfile():
     f = open("Textdata.txt", "r")
     frm_test = tk.Frame(master=window)
@@ -94,11 +72,17 @@ def openfile():
     test_test.grid_forget
     
             
-#buttons
+
+       #BUTTONS
 #Store email and password button
 btn_emailbutton = tk.Button(master=window, text="Store!", command=store_file,)
 btn_viewStorage = tk.Button(master=window, text="View", command= openfile,)
-    #GRAPHICS
+ 
+       
+       
+       
+       
+       #GRAPHICS
    
 #layout of email entry and lab in frm_entry
 #using the .grid() geometry manager
