@@ -56,7 +56,7 @@ def store_file():
     print(b)
     print(c)
     f = open('Textdata.txt', 'a')
-    f.write('Username: ' + a + '\n' + 'Password: ' + b + '\n' + 'Hint: ' + c + '\n')
+    f.write('Username: ' + a + ' ' + 'Password: ' + b + ' ' + 'Hint: ' + c + '\n')
     f.close()
     messagebox.showinfo('Added Entity', 'Successfully Added, \n' + 'Email: ' + a + '\nPassword: ' + b + '\nHint: ' + c + '\n')
     
